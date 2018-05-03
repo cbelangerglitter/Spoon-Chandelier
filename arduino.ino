@@ -1,29 +1,22 @@
-int speed = 100 ;
+int button;
+
 void setup() {
-  pinMode(11, OUTPUT);
-  pinMode(10, OUTPUT);
-  pinMode(9, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(8, INPUT);
+  Serial.begin(9600);
 }
 
-void loop()
-{
-  digitalWrite(9, HIGH);
-  digitalWrite(11, HIGH);
-  digitalWrite(9, LOW);  
-  digitalWrite(11, LOW);
-  
-  delay(speed); // Wait for 1000 millisecond(s)
-  
-  digitalWrite(9, HIGH);
-  digitalWrite(10, HIGH);
-  digitalWrite(9, LOW);  
-  digitalWrite(10, LOW);
-  
-  delay(speed); // Wait for 1000 millisecond(s)       
-  
-  digitalWrite(10, HIGH);
-  digitalWrite(11, HIGH);
-  digitalWrite(10, LOW);  
-  digitalWrite(11, LOW);
+void loop() {
+  button = digitalRead(8);
+  Serial.println(button);
+  if (button == 1) {
+    digitalWrite(7, HIGH);
+    digitalWrite(6, HIGH);
+    delay(100);
+    digitalWrite(7, LOW);
+    digitalWrite(6, LOW);
+  }
 }
 
